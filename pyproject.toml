@@ -1,0 +1,86 @@
+[project]
+name = "element84-harvester"
+version = "0.1.0"
+description = "Harvest the element84 Earth Search STAC catalogue into the EO-DataHub public catalogue"
+readme = "README.md"
+
+requires-python = ">=3.12"
+
+license = {file = "LICENSE"}
+
+authors = [
+  {name = "EO-DataHub"}
+]
+
+maintainers = [
+  {name = "EO-DataHub"}
+]
+
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+# Not yet implemented — see INSTRUCTIONS.md. Expected to mirror planet-harvester's
+# dependency set (S3 upload, Pulsar messaging via eodhp-utils, HTTP client).
+dependencies = [
+    "boto3",
+    "botocore",
+    "click",
+    "eodhp-utils @ git+https://github.com/UKEODHP/eodhp-utils@v0.1.4",
+    "requests",
+]
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest", "pytest-xdist", "pytest-mock", "pytest-watcher", "black", "ruff", "isort", "pre-commit", "moto", "requests-mock"]
+
+[project.urls]
+homepage = "https://github.com/EO-DataHub/"
+repository = "https://github.com/EO-DataHub/element84-harvester"
+changelog = "https://github.com/EO-DataHub/element84-harvester/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["setuptools>=69.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+markers = [
+  "integrationtest: Integration test"
+]
+
+[tool.setuptools]
+packages = ["element84_harvester"]
+
+[tool.black]
+line-length = 100
+target-version = ['py312']
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+select = ["E", "F", "B", "W"]
+
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "build",
+    "dist",
+    "venv",
+]
+
+[tool.pylint.'MESSAGES CONTROL']
+disable = '''
+    line-too-long,
+    missing-class-docstring,
+    too-many-locals,
+    too-many-instance-attributes,
+    logging-fstring-interpolation,
+'''
