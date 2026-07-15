@@ -4,7 +4,7 @@ from typing import Sequence
 from eodhp_utils.messagers import Messager
 
 
-class Element84HarvesterMessager(Messager[str]):
+class Element84HarvesterMessager(Messager[dict]):
     """
     Loads STAC files harvested from the element84 Earth Search API into an S3 bucket with file key
     relating to the owning catalog combined with the file path in the public catalogue.
@@ -26,7 +26,9 @@ class Element84HarvesterMessager(Messager[str]):
             )
 
         for key in deleted_keys:
-            action_list.append(Messager.OutputFileAction(file_body=None, cat_path=key))
+            action_list.append(
+                Messager.OutputFileAction(file_body=None, cat_path=key)  # pyright: ignore[reportArgumentType]
+            )
 
         return action_list
 

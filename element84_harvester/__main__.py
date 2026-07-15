@@ -52,7 +52,7 @@ def get_file_hash(data: str) -> str:
     return _md5_hash(data.encode("utf-8"))
 
 
-def get_file_s3(bucket: str, key: str, s3_client) -> str:
+def get_file_s3(bucket: str, key: str, s3_client) -> str | None:
     """Retrieve data from an S3 bucket"""
     try:
         file_obj = s3_client.get_object(Bucket=bucket, Key=key)
@@ -65,11 +65,9 @@ def get_file_s3(bucket: str, key: str, s3_client) -> str:
 def get_metadata(bucket: str, key: str, s3_client) -> dict:
     """Read file at given S3 location and parse as JSON"""
     previously_harvested = get_file_s3(bucket, key, s3_client)
-    try:
-        previously_harvested = json.loads(previously_harvested)
-    except TypeError:
-        previously_harvested = {}
-    return previously_harvested
+    if previously_harvested is None:
+        return {}
+    return json.loads(previously_harvested)
 
 
 def make_catalogue() -> dict:

@@ -68,14 +68,14 @@ def test_harvest(mock_create_client, requests_mock, mock_collection_response):
 
     bucket_name = "my-bucket"
     s3 = boto3.resource("s3", region_name="us-east-1")
-    s3.create_bucket(Bucket=bucket_name)
+    s3.create_bucket(Bucket=bucket_name)  # pyright: ignore[reportAttributeAccessIssue]
 
     runner = CliRunner()
     result = runner.invoke(harvest, f"workspace catalogue {bucket_name}".split())
     assert result.exit_code == 0, result.output
 
     s3 = boto3.resource("s3")
-    my_bucket = s3.Bucket(bucket_name)
+    my_bucket = s3.Bucket(bucket_name)  # pyright: ignore[reportAttributeAccessIssue]
 
     # catalog.json + collection.json + harvested-metadata manifest
     assert len(list(my_bucket.objects.all())) == 3
@@ -115,7 +115,7 @@ def test_harvest_expected_calls(
 
     bucket_name = "my-bucket"
     s3 = boto3.resource("s3", region_name="us-east-1")
-    s3.create_bucket(Bucket=bucket_name)
+    s3.create_bucket(Bucket=bucket_name)  # pyright: ignore[reportAttributeAccessIssue]
 
     runner = CliRunner()
     runner.invoke(harvest, f"workspace catalogue {bucket_name}".split())
@@ -136,7 +136,7 @@ def test_harvest_second_run_no_changes_sends_nothing(
 
     bucket_name = "my-bucket"
     s3 = boto3.resource("s3", region_name="us-east-1")
-    s3.create_bucket(Bucket=bucket_name)
+    s3.create_bucket(Bucket=bucket_name)  # pyright: ignore[reportAttributeAccessIssue]
 
     runner = CliRunner()
     runner.invoke(harvest, f"workspace catalogue {bucket_name}".split())
@@ -160,7 +160,7 @@ def test_harvest_removed_collection_produces_deleted_keys(
 
     bucket_name = "my-bucket"
     s3 = boto3.resource("s3", region_name="us-east-1")
-    s3.create_bucket(Bucket=bucket_name)
+    s3.create_bucket(Bucket=bucket_name)  # pyright: ignore[reportAttributeAccessIssue]
 
     runner = CliRunner()
     runner.invoke(harvest, f"workspace catalogue {bucket_name}".split())

@@ -37,7 +37,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pip-tools", "pytest", "pytest-xdist", "pytest-mock", "pytest-watcher", "black", "ruff", "isort", "pre-commit", "moto", "requests-mock"]
+dev = ["pip-tools", "pytest", "pytest-xdist", "pytest-mock", "pytest-watcher", "black", "ruff", "isort", "pre-commit", "moto", "requests-mock", "pyright"]
 
 [project.urls]
 homepage = "https://github.com/EO-DataHub/"
@@ -64,7 +64,6 @@ target-version = ['py312']
 [tool.ruff]
 line-length = 110
 target-version = "py312"
-select = ["E", "F", "B", "W"]
 
 exclude = [
     ".git",
@@ -75,6 +74,9 @@ exclude = [
     "dist",
     "venv",
 ]
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "W"]
 
 [tool.pylint.'MESSAGES CONTROL']
 disable = '''

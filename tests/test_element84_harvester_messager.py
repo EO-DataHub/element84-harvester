@@ -54,11 +54,11 @@ def test_process_msg_deleted():
     }
 
     expected_action_1 = Element84HarvesterMessager.OutputFileAction(
-        file_body=None,
+        file_body=None,  # pyright: ignore[reportArgumentType]
         cat_path="key/to/data1",
     )
     expected_action_2 = Element84HarvesterMessager.OutputFileAction(
-        file_body=None,
+        file_body=None,  # pyright: ignore[reportArgumentType]
         cat_path="key/to/data2",
     )
 
@@ -95,11 +95,11 @@ def test_process_msg_update_and_delete():
         cat_path="key/to/data2",
     )
     expected_action_3 = Element84HarvesterMessager.OutputFileAction(
-        file_body=None,
+        file_body=None,  # pyright: ignore[reportArgumentType]
         cat_path="key/to/data3",
     )
     expected_action_4 = Element84HarvesterMessager.OutputFileAction(
-        file_body=None,
+        file_body=None,  # pyright: ignore[reportArgumentType]
         cat_path="key/to/data4",
     )
 
