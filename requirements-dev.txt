@@ -39,7 +39,7 @@ click==8.4.2
     #   black
     #   element84-harvester (pyproject.toml)
     #   pip-tools
-cryptography==49.0.0
+cryptography==50.0.0
     # via moto
 distlib==0.4.3
     # via virtualenv
