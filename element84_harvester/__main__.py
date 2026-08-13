@@ -12,6 +12,7 @@ from eodhp_utils.runner import get_boto3_session, get_pulsar_client, setup_loggi
 from element84_harvester.element84_harvester_messager import Element84HarvesterMessager
 from element84_harvester.response_adaptor import (
     ELEMENT84_API_URL_DEFAULT,
+    add_sentinel_2_c1_l2a_metadata,
     rewrite_hrefs,
 )
 
@@ -35,7 +36,7 @@ def get_collections() -> list:
     for collection_id in valid_collection_ids:
         response = requests.get(f"{element84_api_url}/collections/{collection_id}")
         response.raise_for_status()
-        collections.append(rewrite_hrefs(response.json()))
+        collections.append(add_sentinel_2_c1_l2a_metadata(rewrite_hrefs(response.json())))
 
     return collections
 
