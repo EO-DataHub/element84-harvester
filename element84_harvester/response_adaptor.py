@@ -9,7 +9,8 @@ SENTINEL_2_C1_L2A_ACKNOWLEDGEMENT = (
     "provided by Element 84 Earth Search, and made discoverable through the EODH's federated "
     "search catalogue. Please note, users accessing this collection via EODH should "
     "appropriately acknowledge usage of this dataset in line with the Registry of Open Data on "
-    "AWS guidance (see How to Cite): https://registry.opendata.aws/sentinel-2-l2a-cogs"
+    "AWS guidance (see How to Cite): https://registry.opendata.aws/sentinel-2-l2a-cogs and the "
+    "further details in the collection metadata - see Additional Resources -> cite(as)"
 )
 SENTINEL_2_C1_L2A_THUMBNAIL_URL = (
     "https://eodhp-thumbnails.s3.eu-west-2.amazonaws.com/element84/sentinel-2-c1-l2a/e84_s2.png"
