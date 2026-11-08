@@ -58,7 +58,7 @@ six==1.17.0
     # via python-dateutil
 typing-extensions==4.16.0
     # via referencing
-urllib3==2.7.0
+urllib3==2.8.0
     # via
     #   botocore
     #   requests
