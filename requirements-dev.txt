@@ -24,7 +24,7 @@ botocore==1.43.48
     #   s3transfer
 build==1.5.1
     # via pip-tools
-certifi==2026.6.17
+certifi==2026.10.23
     # via
     #   pulsar-client
     #   requests
@@ -74,7 +74,9 @@ moto==5.2.2
 mypy-extensions==1.1.0
     # via black
 nodeenv==1.10.0
-    # via pre-commit
+    # via
+    #   pre-commit
+    #   pyright
 packaging==26.2
     # via
     #   black
@@ -104,6 +106,8 @@ pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
+pyright==1.1.414
+    # via element84-harvester (pyproject.toml)
 pytest==9.1.1
     # via
     #   element84-harvester (pyproject.toml)
@@ -150,8 +154,10 @@ s3transfer==0.19.1
 six==1.17.0
     # via python-dateutil
 typing-extensions==4.16.0
-    # via referencing
-urllib3==2.7.0
+    # via
+    #   pyright
+    #   referencing
+urllib3==2.8.0
     # via
     #   botocore
     #   requests
